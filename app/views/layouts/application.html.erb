@@ -12,7 +12,27 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body id="page-top">
+    <div id="wrapper">
+      <%= render "layouts/shared/sidebar" %>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <%= render "layouts/shared/navbar" %>
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Hortifrutidakelly 2021</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- Scroll to Top Button-->
+
+    <%#= render "layouts/shared/logout_modal" %>
   </body>
 </html>
