@@ -7,3 +7,36 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import "datatables.net-bs4/css/dataTables.bootstrap4.min";
 
 @import "./shared/sb-admin-2";
+
+.action-add {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(90, 92, 105, 0.5);
+  line-height: 46px;
+}
+
+
+@media only screen and (max-width: 540px) {
+  .sidebar .sidebar-brand .sidebar-brand-icon span {
+    font-size: .8rem;
+    white-space: nowrap;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 541px) {
+  .sidebar .sidebar-brand .sidebar-brand-icon span {
+    display: none;
+  }
+
+  .sidebar.toggled .sidebar-brand-icon span{
+    display: block;
+    font-size: .8rem;
+    white-space: nowrap;
+  }
+}

@@ -16,7 +16,7 @@
               <li class="list-group-item">
                 <div class="d-flex bd-highlight">
                   <div class="p-2 flex-grow-1 bd-highlight"><%= category.name %></div>
-                  <div class="p-2 bd-highlight"><span class="badge badge-primary badge-pill" title="Produtos associados">0<%#= category.products.size %></span></div>
+                  <div class="p-2 bd-highlight"><span class="badge badge-primary badge-pill" title="Produtos associados"><%= category.products.size %></span></div>
                   <div class="p-2 bd-highlight">
                     <%= link_to edit_admin_category_path(category.id), class: "text-gray-500", title: "Editar" do %>
                       <i class="fas fa-pen"></i>
@@ -43,6 +43,6 @@
   </div>
 </div>
 
-<a class="scroll-to-top rounded-circle bg-primary" style="display: block !important;" href="<%= new_admin_category_path %>">
+<a class="action-add rounded-circle bg-primary" href="<%= new_admin_category_path %>">
   <i class="fas fa-plus"></i>
 </a>

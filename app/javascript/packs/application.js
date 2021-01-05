@@ -19,3 +19,5 @@ require("chart.js")
 require('./shared/demo/chart-area-demo')
 require('./shared/demo/chart-bar-demo')
 require('./shared/demo/chart-pie-demo')
+
+require('./shared/form')
