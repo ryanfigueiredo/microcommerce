@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_215929) do
 
   create_table "delivery_charges", force: :cascade do |t|
     t.string "county", null: false
-    t.decimal "price", null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
