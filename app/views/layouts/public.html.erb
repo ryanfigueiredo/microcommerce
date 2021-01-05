@@ -14,10 +14,9 @@
 
   <body id="page-top">
     <div id="wrapper">
-      <%= render "layouts/shared/sidebar" %>
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-          <%= render "layouts/shared/navbar", layout: :application %>
+          <%= render "layouts/shared/navbar", layout: :public %>
           <div class="container-fluid">
             <%= yield %>
           </div>
@@ -31,6 +30,5 @@
         </footer>
       </div>
     </div>
-    <%#= render "layouts/shared/logout_modal" %>
   </body>
 </html>

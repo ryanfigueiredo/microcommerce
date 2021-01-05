@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     models:
       category: "Categoria"
+      product: "Produto"
     attributes:
       category:
         name: "Nome"
