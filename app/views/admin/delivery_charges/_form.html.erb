@@ -1,0 +1,16 @@
+<%= form_for [:admin, delivery_charge], { html: { class: "row" } } do |form| %>
+  <div class="col-12 col-sm pr-sm-0 mr-2 mb-2">
+    <%= form.text_field :county, class: "form-control", placeholder: "Munícipio" %>
+  </div>
+  <div class="col-12 col-sm pr-sm-0 mr-sm-2 mb-2">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="price-addon">R$</span>
+      </div>
+      <%= form.number_field :price, class: "form-control", placeholder: "Preço", min: 0.01, step: 0.01, aria: { describedby: "price-addon"} %>
+    </div>
+  </div>
+  <div class="col-12 col-sm-auto pl-sm-0">
+    <%= form.submit class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

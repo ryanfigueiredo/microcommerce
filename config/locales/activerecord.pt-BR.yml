@@ -3,6 +3,7 @@ pt-BR:
     models:
       category: "Categoria"
       product: "Produto"
+      delivery_charge: "Taxa de entrega"
     attributes:
       category:
         name: "Nome"

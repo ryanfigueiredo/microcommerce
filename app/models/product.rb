@@ -4,6 +4,9 @@ class Product < ApplicationRecord
     presence: true,
     format: { with: /\A\d+(?:\.\d{2})?\z/ },
     numericality: { greater_than: 0, less_than: 1000000 }
+  validates :promotional_price,
+    format: { with: /\A\d+(?:\.\d{2})?\z/ },
+    numericality: { greater_than: 0, less_than: 1000000 }
 
   has_one_attached :picture
   has_one :category
