@@ -21,3 +21,4 @@ require('./shared/demo/chart-bar-demo')
 require('./shared/demo/chart-pie-demo')
 
 require('./shared/form')
+require('./order/index')

@@ -42,16 +42,18 @@
         <% else %>
           <i class="fas fa-clipboard-list fa-fw"></i>
         <% end %>
-        <span class="badge badge-danger badge-counter" id="badge-counter" >0</span>
+        <span class="badge badge-danger badge-counter" id="bag-amount-items" >0</span>
       </a>
 
       <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
-            Minha Sacola
+          Minha Sacola
+          <span class="float-right">Total R$ <span id="bag-total-value">0</span></span>
         </h6>
-        <div class="items">
+        <div id="product-bag">
         </div>
-        <a class="dropdown-item text-center small text-gray-500" id="not-item" href="#">Nenhum item na sacola</a>
+        <span class="dropdown-item text-center small text-gray-500" id="message-bag">Nenhum item na sacola</span>
+        <a class="dropdown-item text-center small text-gray-500" style="display: none;" id="make-wish" href="#wish-modal" data-toggle="modal" data-target="#wish-modal">Fazer pedido</a>
       </div>
     </li>
   </ul>
