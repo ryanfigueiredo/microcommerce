@@ -4,6 +4,14 @@ pt-BR:
       category: "Categoria"
       product: "Produto"
       delivery_charge: "Taxa de entrega"
+      customer_order: "Pedido do cliente"
     attributes:
       category:
         name: "Nome"
+      customer_order:
+        total_value: "Valor total"
+        delivery_address: "Endereço de entrega"
+        delivery_charge_id: "Taxa de entrega"
+        way_of_payment: "Forma de pagamento"
+        observation: "Observações"
+        change_for: "Troco para"

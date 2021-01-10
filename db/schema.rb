@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_215929) do
+ActiveRecord::Schema.define(version: 2021_01_09_213854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,11 +42,34 @@ ActiveRecord::Schema.define(version: 2021_01_05_215929) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "customer_orders", force: :cascade do |t|
+    t.decimal "total_value", null: false
+    t.string "delivery_address", null: false
+    t.bigint "delivery_charge_id", null: false
+    t.integer "way_of_payment", null: false
+    t.string "observation"
+    t.decimal "change_for"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["delivery_charge_id"], name: "index_customer_orders_on_delivery_charge_id"
+  end
+
   create_table "delivery_charges", force: :cascade do |t|
     t.string "county", null: false
     t.decimal "price", precision: 10, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ordered_products", force: :cascade do |t|
+    t.decimal "total_value", null: false
+    t.bigint "product_id", null: false
+    t.integer "amount", null: false
+    t.bigint "customer_order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_order_id"], name: "index_ordered_products_on_customer_order_id"
+    t.index ["product_id"], name: "index_ordered_products_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -61,5 +84,8 @@ ActiveRecord::Schema.define(version: 2021_01_05_215929) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "customer_orders", "delivery_charges"
+  add_foreign_key "ordered_products", "customer_orders"
+  add_foreign_key "ordered_products", "products"
   add_foreign_key "products", "categories"
 end

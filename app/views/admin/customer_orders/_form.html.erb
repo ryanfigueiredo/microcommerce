@@ -1,0 +1,27 @@
+<%= form_for [:admin, customer_order], { html: { class: "" } } do |form| %>
+  <div class="form-group">
+    <%= form.label :way_of_payment %>
+    <%= form.select :way_of_payment, [["Cartão", 0],["Dinheiro", 1]], {}, { class: "form-control" } %>
+  </div>
+  <div class="form-group">
+    <%= form.label :delivery_charge_id %>
+    <%= form.select :delivery_charge_id, delivery_charges.collect{ |delivery_charge| ["#{delivery_charge.county} - R$ #{delivery_charge.price}", delivery_charge.id] }, {}, { class: "form-control" } %>
+  </div>
+  <div class="form-group">
+    <%= form.label :delivery_address %>
+    <%= form.text_field :delivery_address, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :observation %>
+    <%= form.text_field :observation, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :change_for %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="price-addon">R$</span>
+      </div>
+      <%= form.number_field :change_for, class: "form-control", min: 0.01, step: 0.01, aria: { describedby: "price-addon"} %>
+    </div>
+  </div>
+<% end %>
