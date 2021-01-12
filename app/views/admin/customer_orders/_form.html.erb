@@ -1,7 +1,8 @@
 <%= form_for [:admin, customer_order], { html: { class: "" } } do |form| %>
+  <%= form.hidden_field :total_value %>
   <div class="form-group">
     <%= form.label :way_of_payment %>
-    <%= form.select :way_of_payment, [["Cartão", 0],["Dinheiro", 1]], {}, { class: "form-control" } %>
+    <%= form.select :way_of_payment, [["Cartão de crédito", "credit_card"],["Dinheiro", "money"]], {}, { class: "form-control" } %>
   </div>
   <div class="form-group">
     <%= form.label :delivery_charge_id %>
@@ -15,7 +16,7 @@
     <%= form.label :observation %>
     <%= form.text_field :observation, class: "form-control" %>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display: none;" id="form-group-money">
     <%= form.label :change_for %>
     <div class="input-group">
       <div class="input-group-prepend">
