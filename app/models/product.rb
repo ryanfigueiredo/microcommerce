@@ -9,7 +9,7 @@ class Product < ApplicationRecord
     numericality: { greater_than: 0, less_than: 1000000 }
 
   has_one_attached :picture
-  has_one :category
+  belongs_to :category
 
   def promotional_price=(price)
     format_price(price)
