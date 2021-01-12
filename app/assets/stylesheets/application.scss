@@ -20,6 +20,14 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   line-height: 46px;
 }
 
+.remove-item {
+  position: absolute;
+  right: 15px;
+}
+
+.font-size-100 {
+  font-size: 100% !important;
+}
 
 @media only screen and (max-width: 540px) {
   .sidebar .sidebar-brand .sidebar-brand-icon span {

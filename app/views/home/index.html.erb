@@ -22,7 +22,7 @@
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                       <%= product.name %>
-                      <span class="badge badge-secondary badge-counter font-size-100 size-items" style="display: none;">0</span>
+                      <span class="badge badge-secondary badge-counter font-size-100" id="<%= "#{category.name}-#{category.id}-#{product.id}-size-items" %>" style="display: none;">1</span>
                     </div>
                     <div class="h6 mb-0 font-weight-bold text-gray-800">R$ <%= product.price %></div>
                     <span class="card-text"><%= product.description %></span>
@@ -36,7 +36,8 @@
                       </button>
                       <button class="btn btn-danger btn-circle btn-sm remove-product-to-bag"
                         data-product-id="<%= "##{category.name}-#{category.id}-#{product.id}" %>"
-                        data-price="<%= product.price %>">
+                        data-price="<%= product.price %>"
+                        data-update-item=true>
                         <i class="fas fa-minus"></i>
                       </button>
                     </div>

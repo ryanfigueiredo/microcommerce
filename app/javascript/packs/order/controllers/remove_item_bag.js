@@ -6,48 +6,41 @@ var handleClickRemoveProduct = () => {
   $('.remove-product-to-bag').click(function() {
     let productId = $(this).data('product-id')
     let productPrice = $(this).data('price')
-    let ElementBagAmountItems = $('#bag-amount-items')
-    let ElementProductAmount = $(productId + '-amount')
-    let productAmount = parseInt(ElementProductAmount.text())
+    let elementProductAmount = $(productId + '-amount')
+    let productAmount = parseInt(elementProductAmount.text())
 
     if(productAmount > 1) {
-      removeItemInBag(ElementProductAmount, productAmount, productId, productPrice)
-      $('#bag-total-value').text(calculateValueTotalBag().toFixed(2))
-    } else if (productAmount === 1) {
+      updateBagProduct(productId, productPrice)
+    } else if (productAmount == 1) {
       $(productId).remove()
-      $('#bag-total-value').text(calculateValueTotalBag().toFixed(2))
+      $(productId + '-size-items').hide()
+      changeMessageTextBag()
     }
 
-    let bagAmountItemsValue = parseInt(ElementBagAmountItems.text())
-    if(bagAmountItemsValue > 0 && productAmount > 0) {
-      ElementBagAmountItems.text(bagAmountItemsValue - 1)
-      changeMessageTextBag()
-      $('#bag-total-value').text(calculateValueTotalBag().toFixed(2))
-    }
-    if(parseInt(ElementBagAmountItems.text()) === 0) {
-      calculateValueTotalBag()
-    }
+    $('#bag-amount-items').text(calculateValueTotalBag('.product-amount-bag'))
+    $('#bag-total-value').text(calculateValueTotalBag('.product-price-bag').toFixed(2))
   })
 }
 
-var removeItemInBag = (ElementProductAmount, productAmount, productId, productPrice) => {
-  let ElementProductPrice = $(productId + '-price')
-  let ElementProductPriceValue = parseFloat(ElementProductPrice.text())
-  let totalPrice = ElementProductPriceValue - productPrice
+var updateBagProduct = (productId, productPrice) => {
+  let elementProductAmount = $(productId + '-amount')
+  let elementSizeItems = $(productId + '-size-items')
+  elementProductAmount.text(parseInt(elementProductAmount.text()) - 1)
+  elementSizeItems.text(parseInt(elementSizeItems.text()) - 1)
 
-  ElementProductPrice.text(totalPrice.toFixed(2))
-  ElementProductAmount.text(productAmount - 1)
+  let elementProductPrice = $(productId + '-price')
+  elementProductPrice.text((parseFloat(elementProductPrice.text()) - parseFloat(productPrice)).toFixed(2))
+}
+
+var calculateValueTotalBag = (className) => {
+  if ($('#product-bag').children().length === 0) {
+    return 0
+  } else {
+    return $.map($(className), element => parseFloat($(element).text())).reduce((accumulator, currentValue) => accumulator + currentValue)
+  }
 }
 
 var changeMessageTextBag = () => {
   $('#message-bag').show()
   $('#make-wish').hide()
-}
-
-var calculateValueTotalBag = () => {
-  if ($('.price-product').length === 0) {
-    return 0
-  } else {
-    return $.map($('.price-product'), element => parseFloat($(element).text())).reduce((accumulator, currentValue) => accumulator + currentValue)
-  }
 }
