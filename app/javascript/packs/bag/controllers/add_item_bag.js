@@ -78,6 +78,8 @@ var updateTemplateProduct = (productTemplate, productParams) => {
 
   productTemplate.amount.classList.add('product-amount-bag')
   productTemplate.price.classList.add('product-price-bag')
+
+  productTemplate.btnRemoveProduct.setAttribute('data-product-id', '#' + productParams.productId)
 }
 
 var calculateValueTotalBag = (className) => {
@@ -86,5 +88,5 @@ var calculateValueTotalBag = (className) => {
 
 var changeMessageTextBag = () => {
   $('#message-bag').hide()
-  $('#make-wish').show()
+  $('#make-a-customer-order').show()
 }
