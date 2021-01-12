@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   root "home#index"
 
   namespace :admin do
-    root "requests#index"
+    root "customer_orders#index"
     resources :categories
     resources :products
     resources :delivery_charges
-    resources :customer_orders, only: [:create]
+    resources :customer_orders, only: [:create, :index]
   end
 end
