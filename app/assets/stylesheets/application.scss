@@ -29,6 +29,20 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   font-size: 100% !important;
 }
 
+.h7 {
+  font-size: .8rem;
+}
+
+.general-alert {
+  margin: 0px auto;
+  position: fixed;
+  bottom: 20px;
+  left: 0px;
+  right: 0px;
+  max-width: 600px;
+  width: calc(100% - 30px);
+}
+
 @media only screen and (max-width: 540px) {
   .sidebar .sidebar-brand .sidebar-brand-icon span {
     font-size: .8rem;

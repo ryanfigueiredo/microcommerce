@@ -1,7 +1,6 @@
 class OrderedProduct < ApplicationRecord
   validates :product_id, presence: true
   validates :amount, presence: true
-  validates :customer_order_id, presence: true
   validates :total_value,
     presence: true,
     numericality: { greater_than: 0, less_than: 1000000 }

@@ -31,6 +31,10 @@ var updateBagProduct = (productId, productPrice) => {
 
   let elementProductPrice = $('#' + productId + '-price')
   elementProductPrice.text((parseFloat(elementProductPrice.text()) + parseFloat(productPrice)).toFixed(2))
+
+  let elementProduct = $('#' + productId)
+  elementProduct.data('price', elementProductPrice.text())
+  elementProduct.data('amount', elementSizeItems.text())
 }
 
 var buildTemplateProduct = (product) => {
@@ -64,6 +68,7 @@ var getProductParams = (product) => {
     name: $(product).data('name'),
     price: $(product).data('price'),
     img: $(product).data('img'),
+    id: $(product).data('id')
   }
 }
 
@@ -80,6 +85,10 @@ var updateTemplateProduct = (productTemplate, productParams) => {
   productTemplate.price.classList.add('product-price-bag')
 
   productTemplate.btnRemoveProduct.setAttribute('data-product-id', '#' + productParams.productId)
+
+  productTemplate.productId.setAttribute('data-amount', 1)
+  productTemplate.productId.setAttribute('data-price', productParams.price)
+  productTemplate.productId.setAttribute('data-id', productParams.id)
 }
 
 var calculateValueTotalBag = (className) => {

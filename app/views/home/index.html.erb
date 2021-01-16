@@ -31,7 +31,8 @@
                         data-product-id="<%= "#{category.name}-#{category.id}-#{product.id}" %>"
                         data-price="<%= product.price %>"
                         data-name="<%= product.name %>"
-                        data-img="<%= url_for(product.picture) %>">
+                        data-img="<%= url_for(product.picture) %>"
+                        data-id="<%= product.id %>">
                         <i class="fas fa-plus"></i>
                       </button>
                       <button class="btn btn-danger btn-circle btn-sm remove-product-to-bag"

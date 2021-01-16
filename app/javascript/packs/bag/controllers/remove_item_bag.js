@@ -29,6 +29,10 @@ var updateBagProduct = (productId, productPrice) => {
 
   let elementProductPrice = $(productId + '-price')
   elementProductPrice.text((parseFloat(elementProductPrice.text()) - parseFloat(productPrice)).toFixed(2))
+
+  let elementProduct = $(productId)
+  elementProduct.data('price', elementProductPrice.text())
+  elementProduct.data('amount', elementSizeItems.text())
 }
 
 var verifyAndCalculatePriceAndAmountTheProducts = () => {

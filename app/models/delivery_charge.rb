@@ -5,6 +5,4 @@ class DeliveryCharge< ApplicationRecord
   validates :price,
     presence: true,
     numericality: { greater_than: 0, less_than: 1000000 }
-
-  # has_many :requests
 end
