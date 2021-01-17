@@ -1,0 +1,15 @@
+<a class="nav-link dropdown-toggle" title="Pedidos" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-clipboard-list fa-fw"></i>
+  <span class="badge badge-danger badge-counter" id="customer-order-amount-items" >0</span>
+</a>
+
+<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+  <h6 class="dropdown-header">
+    Pedido(s)
+    <span class="float-right"><span id="customer-order-total-value">0</span></span>
+  </h6>
+  <div id="product-customer-order">
+  </div>
+  <span class="dropdown-item text-center small text-gray-500" id="message-customer-order">Nenhum novo pedido</span>
+  <a class="dropdown-item text-center small text-gray-500" style="display: none;" id="make-a-customer-order" href="#customer-order-modal" data-toggle="modal" data-target="#customer-order-modal"></a>
+</div>

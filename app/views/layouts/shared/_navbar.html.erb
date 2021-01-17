@@ -36,25 +36,11 @@
     </li>
 
     <li class="nav-item dropdown no-arrow mx-1">
-      <a class="nav-link dropdown-toggle" title="<%= layout == :public ? "Sacola" : "Pedidos" %>" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <% if layout == :public %>
-          <i class="fas fa-shopping-bag fa-fw"></i>
-        <% else %>
-          <i class="fas fa-clipboard-list fa-fw"></i>
-        <% end %>
-        <span class="badge badge-danger badge-counter" id="bag-amount-items" >0</span>
-      </a>
-
-      <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-        <h6 class="dropdown-header">
-          Minha Sacola
-          <span class="float-right">Total R$ <span id="bag-total-value">0</span></span>
-        </h6>
-        <div id="product-bag">
-        </div>
-        <span class="dropdown-item text-center small text-gray-500" id="message-bag">Nenhum item na sacola</span>
-        <a class="dropdown-item text-center small text-gray-500" style="display: none;" id="make-a-customer-order" href="#customer-order-modal" data-toggle="modal" data-target="#customer-order-modal">Fazer pedido</a>
-      </div>
+      <% if layout == :public %>
+        <%= render "layouts/shared/bag" %>
+      <% else %>
+        <%= render "layouts/shared/customer_order" %>
+      <% end %>
     </li>
   </ul>
 </nav>

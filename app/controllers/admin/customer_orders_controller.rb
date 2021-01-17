@@ -8,6 +8,7 @@ class Admin::CustomerOrdersController < ApplicationController
 
     respond_to do |format|
       if @customer_order.save
+        ActionCable.server.broadcast "customer_order_channel", content: set_customer_order_to_list
         format.html { redirect_to root_path, notice: 'Pedido enviado com sucesso.' }
       else
         format.html { redirect_to root_path }
@@ -31,5 +32,14 @@ class Admin::CustomerOrdersController < ApplicationController
         :amount,
       ]
     )
+  end
+
+  def set_customer_order_to_list
+    {
+      delivery_address: @customer_order.delivery_address,
+      way_of_payment: CustomerOrder.human_enum_name(:way_of_payment, @customer_order.way_of_payment),
+      list_products: @customer_order.ordered_products_amount_and_names.to_sentence,
+      change_for: @customer_order.change_for
+    }
   end
 end
