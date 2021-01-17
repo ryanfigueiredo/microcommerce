@@ -1,7 +1,7 @@
 <%= form_for [:admin, category], { html: { class: "row" } } do |form| %>
   <div class="col-12 col-sm pr-sm-0 mr-2 mb-2">
     <%= form.text_field :name, class: "form-control", placeholder: "Nome" %>
-    <%= display_field_error_message(@category) %>
+    <%= display_field_error_message(@category, :name) %>
   </div>
   <div class="col-12 col-sm-auto pl-sm-0">
     <%= form.submit class: "btn btn-primary btn-block" %>
