@@ -20,3 +20,10 @@ pt-BR:
       delivery_charge:
         price: "Preço"
         county: "Municipio"
+      product:
+        name: "Nome"
+        category_id: "Categoria"
+        price: "Preço"
+        promotional_price: "Preço promocional"
+        description: "Descrição"
+        picture: "Imagem"

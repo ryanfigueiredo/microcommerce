@@ -24,7 +24,7 @@ module Admin
         if @product.save
           format.html { redirect_to admin_products_path, notice: 'Produto criado com sucesso.' }
         else
-          format.html { render :new }
+          format.html { @categories = Category.order(:name); render :new }
         end
       end
     end

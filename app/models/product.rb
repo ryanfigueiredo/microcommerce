@@ -6,7 +6,7 @@ class Product < ApplicationRecord
     presence: true,
     numericality: { greater_than: 0, less_than: 1000000 }
   validates :promotional_price,
-    numericality: { greater_than: 0, less_than: 1000000 }
+    numericality: { greater_than: 0, less_than: 1000000 }, allow_nil: true
 
   has_one_attached :picture
   belongs_to :category

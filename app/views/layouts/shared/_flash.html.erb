@@ -1,0 +1,5 @@
+<% flash.each do |type, msg| %>
+  <div class="card bg-<%= bootstrap_class_for_flash(type) %> card-body general-alert text-white text-center">
+    <%= msg %>
+  </div>
+<% end %>

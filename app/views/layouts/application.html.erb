@@ -19,6 +19,7 @@
         <div id="content">
           <%= render "layouts/shared/navbar", layout: :application %>
           <div class="container-fluid">
+            <%= render partial: "layouts/shared/flash", flash: flash %>
             <%= yield %>
           </div>
         </div>
