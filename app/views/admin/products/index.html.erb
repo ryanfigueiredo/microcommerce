@@ -1,5 +1,5 @@
 <div class="text-xs font-weight-bold text-primary text-uppercase p-3">
-  Lista De Produtos
+  Lista De Produtos  <span class="badge badge-primary font-size-100"><%= @products.size %></span>
 </div>
 
 <% if @products.any? %>
@@ -10,11 +10,10 @@
           <div class="card-body py-0">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                <div class="h6 font-weight-bold text-primary text-uppercase mb-1">
                   <%= product.name %>
                 </div>
                 <%= display_product_price(product) %>
-                <%# <div class="h6 mb-0 font-weight-bold text-gray-800"><del>R$ 6.99</del></div> %>
                 <span class="card-text"><%= product.description %></span>
 
                 <div class="mt-2">

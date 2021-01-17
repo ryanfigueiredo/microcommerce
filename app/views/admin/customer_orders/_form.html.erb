@@ -3,18 +3,22 @@
   <div class="form-group">
     <%= form.label :way_of_payment %>
     <%= form.select :way_of_payment, [["Cartão de crédito", "credit_card"],["Dinheiro", "money"]], {}, { class: "form-control" } %>
+    <%= display_field_error_message(@customer_order, :way_of_payment) %>
   </div>
   <div class="form-group">
     <%= form.label :delivery_charge_id %>
     <%= form.select :delivery_charge_id, delivery_charges.collect{ |delivery_charge| ["#{delivery_charge.county} - R$ #{delivery_charge.price}", delivery_charge.id] }, {}, { class: "form-control" } %>
+    <%= display_field_error_message(@customer_order, :delivery_charge_id) %>
   </div>
   <div class="form-group">
     <%= form.label :delivery_address %>
     <%= form.text_field :delivery_address, class: "form-control" %>
+    <%= display_field_error_message(@customer_order, :delivery_address) %>
   </div>
   <div class="form-group">
     <%= form.label :observation %>
     <%= form.text_field :observation, class: "form-control" %>
+    <%= display_field_error_message(@customer_order, :observation) %>
   </div>
   <div class="form-group" style="display: none;" id="form-group-money">
     <%= form.label :change_for %>
@@ -23,6 +27,7 @@
         <span class="input-group-text" id="price-addon">R$</span>
       </div>
       <%= form.number_field :change_for, class: "form-control", min: 0.01, step: 0.01, aria: { describedby: "price-addon"}, disabled: true %>
+      <%= display_field_error_message(@customer_order, :change_for) %>
     </div>
   </div>
 <% end %>

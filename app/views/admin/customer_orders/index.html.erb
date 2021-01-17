@@ -1,27 +1,35 @@
-<div class="text-xs font-weight-bold text-primary text-uppercase p-3">
-  Pedidos - <span class="badge badge-primary font-size-100"><%= @customer_orders.size %></span>
-</div>
-<div class="row">
-  <% @customer_orders.each do |customer_order| %>
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters">
-            <div class="col">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><%= customer_order.delivery_address %></div>
-              <h4 class="small font-weight-bold"><%= customer_order.ordered_products_amount_and_names.to_sentence %></h4>
-            </div>
-            <div class="col-auto">
-              <div class="h7 mb-0 font-weight-bold text-gray-800">
-                <%= CustomerOrder.human_enum_name(:way_of_payment, customer_order.way_of_payment) %>
+<% if @customer_orders.any? %>
+  <div class="text-xs font-weight-bold text-primary text-uppercase p-3">
+    Pedidos <span class="badge badge-primary font-size-100"><%= @customer_orders.size %></span>
+  </div>
+  <div class="row">
+    <% @customer_orders.each do |customer_order| %>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters">
+              <div class="col">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><%= customer_order.delivery_address %></div>
+                <h4 class="small font-weight-bold"><%= customer_order.ordered_products_amount_and_names.to_sentence %></h4>
               </div>
-              <% if customer_order.money? && customer_order.change_for.present? %>
-                <div class="h7 mb-0 font-weight-bold text-gray-800">R$ <%= "%.2f" % customer_order.change_for %></div>
-              <% end %>
+              <div class="col-auto">
+                <div class="h7 mb-0 font-weight-bold text-gray-800">
+                  <%= CustomerOrder.human_enum_name(:way_of_payment, customer_order.way_of_payment) %>
+                </div>
+                <% if customer_order.money? && customer_order.change_for.present? %>
+                  <div class="h7 mb-0 font-weight-bold text-gray-800">R$ <%= "%.2f" % customer_order.change_for %></div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="card bg-info text-white shadow">
+    <div class="card-body">
+      Nenhum pedido recebido
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 module Admin
   module ProductHelper
     def display_product_price(product)
-      classes = "h6 mb-0 font-weight-bold text-gray-800"
+      classes = "h7 mb-0 font-weight-bold text-gray-800"
       product_price = "R$ #{product.price}"
 
       if product.promotional_price
