@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_213854) do
     t.string "delivery_address", null: false
     t.bigint "delivery_charge_id", null: false
     t.integer "way_of_payment", null: false
+    t.integer "status", default: 0, null: false
     t.string "observation"
     t.decimal "change_for"
     t.datetime "created_at", precision: 6, null: false
