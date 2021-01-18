@@ -1,0 +1,31 @@
+<div class="col-xl-4 col-md-6 mb-4">
+  <div class="card border-left-primary shadow h-100 py-2">
+    <div class="card-body pb-3">
+      <div class="row no-gutters">
+        <div class="col">
+          <h4 class="small font-weight-bold">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            <%= customer_order.delivery_address %>
+          </h4>
+          <h4 class="small font-weight-bold">
+            <i class="fas fa-box-open mr-2"></i>
+            <%= customer_order.ordered_products_amount_and_names.to_sentence %>
+          </h4>
+          <h4 class="small font-weight-bold">
+            <i class="fas fa-<%= customer_order.credit_card? ? "credit-card" : "money-bill" %> mr-2"></i>
+            <%= CustomerOrder.human_enum_name(:way_of_payment, customer_order.way_of_payment) %>
+          <h4>
+        </div>
+        <div class="col-auto">
+          <div class="h7 mb-0 font-weight-bold text-gray-800">
+            Total: R$ <%= "%.2f" % customer_order.total_value %><br>
+            <% if customer_order.change_for.present? %>
+              Troco: R$ <%= "%.2f" % (customer_order.change_for - customer_order.total_value) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render 'admin/customer_orders/admin/item/footer', customer_order: customer_order %>
+    </div>
+  </div>
+</div>

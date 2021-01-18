@@ -13,6 +13,7 @@ consumer.subscriptions.create("CustomerOrderChannel", {
   received(data) {
     let templateCustomerOrderItem = buildTemplateCustomerOrderItem(data.content)
     appendItemInCustomerOrderList(templateCustomerOrderItem)
+    upadateAmountCUstomerOderList()
   }
 });
 
@@ -33,17 +34,32 @@ var getCustomerOrderItemFromTemplate = (content) => {
   return {
     deliveryAddress: content.getElementById('delivery-address'),
     wayOfPayment: content.getElementById('way-of-payment'),
+    creditCard: content.getElementById('credit-card'),
+    money: content.getElementById('money'),
     listProducts: content.getElementById('list-products'),
+    totalValue: content.getElementById('total-value')
   }
 }
 
 var updateTemplateCustomerOrderItem = (customerOrderItemTemplate, customerOrderItemParams) => {
   customerOrderItemTemplate.deliveryAddress.innerHTML = customerOrderItemParams.delivery_address
   customerOrderItemTemplate.wayOfPayment.innerHTML = customerOrderItemParams.way_of_payment
+  customerOrderItemParams.icon_way_of_payment === "credit_card" ? $(customerOrderItemTemplate.money).hide() : $(customerOrderItemTemplate.creditCard).hide()
   customerOrderItemTemplate.listProducts.innerHTML = customerOrderItemParams.list_products
+  customerOrderItemTemplate.totalValue.innerHTML = 'Total: R$ ' + customerOrderItemParams.total_value
 }
 
 var appendItemInCustomerOrderList = (item) => {
   $('#no-item-customer-order').remove()
-  $('#customer-order-list').append(item)
+  $('#customer-order-list').prepend(item)
+
+  setTimeout(function(){
+    let lastElementPulse = $('.pulse').length - 1
+    $($('.pulse')[lastElementPulse]).removeClass('pulse border-left-warning border-bottom-warning').addClass('border-left-primary');
+  }, 30000);
+}
+
+var upadateAmountCUstomerOderList = () => {
+  let elementCustomerOrderAmount = $('#customer-order-amount')
+  elementCustomerOrderAmount.text(parseFloat(elementCustomerOrderAmount.text()) + 1)
 }

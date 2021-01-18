@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between mt-3">
+  <div class="h7">
+    <i class="fas fa-clock mr-2"></i>
+    <%= customer_order.created_at.strftime("%H:%m") %>
+  </div>
+  <div class="dropdown no-arrow cursor-pointer">
+    <div class="small dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="mr-2">
+        <% if customer_order.sent? %>
+          <i class="fas fa-circle text-success"></i> Enviado
+        <% else %>
+          <i class="fas fa-circle text-primary"></i> Aguardando envio
+        <% end %>
+      </span>
+    </div>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% if customer_order.sent? %>
+        <%= link_to admin_customer_order_path(customer_order.id, customer_order: { status: :sent }), method: :patch, remote: true, data: { confirm: "Alterar status?" }, class: "dropdown-item" do %>
+          <span class="mr-2">
+            <i class="fas fa-circle text-primary"></i> Aguardando envio
+          </span>
+        <% end %>
+      <% else %>
+        <%= link_to admin_customer_order_path(customer_order.id, customer_order: { status: :waiting_for_shipment }), method: :patch, remote: true, data: { confirm: "Alterar status?" }, class: "dropdown-item" do %>
+          <span class="mr-2">
+            <i class="fas fa-circle text-success"></i> Enviado
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

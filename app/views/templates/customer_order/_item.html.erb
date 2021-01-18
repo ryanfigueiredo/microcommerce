@@ -1,14 +1,25 @@
 <template id="customer-order-item-template">
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-primary shadow h-100 py-2">
+<div class="col-xl-4 col-md-6 mb-4">
+  <div class="card border-left-warning shadow h-100 py-2 border-bottom-warning pulse">
     <div class="card-body">
       <div class="row no-gutters">
         <div class="col">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="delivery-address"></div>
-          <h4 class="small font-weight-bold" id="list-products"></h4>
+          <div class="h7 font-weight-bold text-primary text-uppercase mb-1">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            <span id="delivery-address"></span>
+          </div>
+          <h4 class="small font-weight-bold">
+            <i class="fas fa-box-open mr-2"></i>
+            <span id="list-products"></span>
+          </h4>
+          <h4 class="small font-weight-bold">
+            <i class="fas fa-credit-card mr-2" id="credit-card"></i>
+            <i class="fas fa-money-bill mr-2" id="money"></i>
+            <span id="way-of-payment"></span>
+          </h4>
         </div>
         <div class="col-auto">
-          <div class="h7 mb-0 font-weight-bold text-gray-800" id="way-of-payment"></div>
+          <div class="h7 mb-0 font-weight-bold text-gray-800" id="total-value"></div>
         </div>
       </div>
     </div>

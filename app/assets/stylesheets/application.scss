@@ -48,6 +48,29 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   z-index: 99999;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pulse {
+  animation-name: stretch;
+  animation-duration: 1.0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(1)
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
+}
+
 @media only screen and (max-width: 540px) {
   .sidebar .sidebar-brand .sidebar-brand-icon span {
     font-size: .8rem;
