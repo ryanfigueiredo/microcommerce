@@ -29,7 +29,7 @@
                     <div class="mt-2">
                       <button class="btn btn-success btn-circle btn-sm mr-1 add-product-to-bag"
                         data-product-id="<%= "#{category.name}-#{category.id}-#{product.id}" %>"
-                        data-price="<%= product.promotional_price.presence || product.price %>"
+                        data-price="<%= format_price(product.promotional_price).presence || format_price(product.price) %>"
                         data-name="<%= product.name %>"
                         data-img="<%= url_for(product.picture) %>"
                         data-id="<%= product.id %>">
@@ -37,7 +37,7 @@
                       </button>
                       <button class="btn btn-danger btn-circle btn-sm remove-product-to-bag"
                         data-product-id="<%= "##{category.name}-#{category.id}-#{product.id}" %>"
-                        data-price="<%= product.promotional_price.presence || product.price %>"
+                        data-price="<%= format_price(product.promotional_price).presence || format_price(product.price) %>"
                         data-update-item=true>
                         <i class="fas fa-minus"></i>
                       </button>

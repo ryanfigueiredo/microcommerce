@@ -10,7 +10,7 @@
           <li class="list-group-item">
             <div class="d-flex bd-highlight">
               <div class="p-2 flex-grow-1 bd-highlight"><%= delivery_charge.county %></div>
-              <div class="p-2 bd-highlight"><span class="badge badge-primary badge-pill p-2">R$ <%= delivery_charge.price %></span></div>
+              <div class="p-2 bd-highlight"><span class="badge badge-primary badge-pill p-2">R$ <%= format_price(delivery_charge.price) %></span></div>
               <div class="p-2 bd-highlight">
                 <%= link_to edit_admin_delivery_charge_path(delivery_charge.id), class: "text-gray-500", title: "Editar" do %>
                   <i class="fas fa-pen"></i>

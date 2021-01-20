@@ -57,9 +57,9 @@ class Admin::CustomerOrdersController < ApplicationController
       way_of_payment: CustomerOrder.human_enum_name(:way_of_payment, @customer_order.way_of_payment),
       list_products: @customer_order.ordered_products_amount_and_names.to_sentence,
       change_for: @customer_order.change_for,
-      total_value: @customer_order.total_value,
+      total_value: format_price(@customer_order.total_value),
       icon_way_of_payment: @customer_order.way_of_payment,
-      order_time: @customer_order.created_at.strftime("%H:%m"),
+      order_time: @customer_order.created_at.strftime("%H:%M"),
       id: @customer_order.id
     }
   end
