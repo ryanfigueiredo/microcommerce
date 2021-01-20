@@ -1,8 +1,8 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist" style="flex-wrap: initial !important; overflow-x: auto; overflow-y: hidden;">
   <% @categories.each_with_index do |category, index| %>
-  <li class="nav-item">
-    <a class="nav-link <%= "active" if index == 0  %>" id="category-tab<%= category.id %>" data-toggle="tab" href="#category-<%= category.id %>" role="tab" aria-controls="category-<%= category.id %>" aria-selected="true"><%= category.name %></a>
-  </li>
+    <li class="nav-item">
+      <a class="nav-link <%= "active" if index == 0  %>" id="category-tab<%= category.id %>" data-toggle="tab" href="#category-<%= category.id %>" role="tab" aria-controls="category-<%= category.id %>" aria-selected="true"><%= category.name %></a>
+    </li>
   <% end %>
 </ul>
 

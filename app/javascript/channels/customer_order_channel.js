@@ -11,9 +11,11 @@ consumer.subscriptions.create("CustomerOrderChannel", {
   },
 
   received(data) {
-    let templateCustomerOrderItem = buildTemplateCustomerOrderItem(data.content)
-    appendItemInCustomerOrderList(templateCustomerOrderItem)
-    upadateAmountCUstomerOderList()
+    if(document.getElementById('customer-order-item-template')) {
+      let templateCustomerOrderItem = buildTemplateCustomerOrderItem(data.content)
+      appendItemInCustomerOrderList(templateCustomerOrderItem)
+      upadateAmountCUstomerOderList()
+    }
   }
 });
 

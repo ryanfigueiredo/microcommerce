@@ -1,16 +1,17 @@
 <div class="text-xs font-weight-bold text-primary text-uppercase p-3">
   Pedidos <span class="badge badge-primary font-size-100" id="customer-order-amount"><%= @customer_orders.size %></span>
 </div>
-<div class="row" id="customer-order-list">
+
+<div class="row mt-3" id="customer-order-list">
   <% if @customer_orders.any? %>
     <% @customer_orders.each do |customer_order| %>
       <%= render "admin/customer_orders/admin/item/index", customer_order: customer_order %>
     <% end %>
   <% else %>
+    <div class="card bg-info text-white shadow" id="no-item-customer-order">
+      <div class="card-body">
+        Nenhum pedido recebido
+      </div>
+    </div>
+  <% end %>
 </div>
-<div class="card bg-info text-white shadow" id="no-item-customer-order">
-  <div class="card-body">
-    Nenhum pedido recebido
-  </div>
-</div>
-<% end %>

@@ -15,9 +15,10 @@
   <body id="page-top">
     <div id="wrapper">
       <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
+        <div id="content" class="content-min-height-calc">
           <%= render "layouts/shared/navbar", layout: :public %>
           <div class="container-fluid">
+            <%= render partial: "layouts/shared/flash", flash: flash %>
             <%= yield %>
           </div>
         </div>

@@ -1,45 +1,37 @@
-<div class="card border-left-primary shadow h-100 py-2">
-  <div class="card-body">
-    <div class="row no-gutters align-items-center">
-      <div class="col mr-2">
-        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-          Categorias <span class="badge badge-primary font-size-100"><%= @categories.size %></span>
+<div class="text-xs font-weight-bold text-primary text-uppercase p-3">
+  Produtos  <span class="badge badge-primary font-size-100"><%= @categories.size %></span>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <% if @categories.any? %>
+      <ul class="list-group">
+        <% @categories.each do |category| %>
+          <li class="list-group-item">
+            <div class="d-flex bd-highlight">
+              <div class="p-2 flex-grow-1 bd-highlight"><%= category.name %></div>
+              <div class="p-2 bd-highlight"><span class="badge badge-primary badge-pill" title="Produtos associados"><%= category.products.size %></span></div>
+              <div class="p-2 bd-highlight">
+                <%= link_to edit_admin_category_path(category.id), class: "text-gray-500", title: "Editar" do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+              </div>
+              <div class="p-2 bd-highlight">
+                <%= link_to admin_category_path(category.id), method: :delete, data: { confirm: "Confirma?" }, class: "text-gray-500", title: "Deletar" do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="card bg-info text-white shadow">
+        <div class="card-body">
+          Nenhuma categoria cadastrada
         </div>
       </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-12">
-        <% if @categories.any? %>
-          <ul class="list-group">
-            <% @categories.each do |category| %>
-              <li class="list-group-item">
-                <div class="d-flex bd-highlight">
-                  <div class="p-2 flex-grow-1 bd-highlight"><%= category.name %></div>
-                  <div class="p-2 bd-highlight"><span class="badge badge-primary badge-pill" title="Produtos associados"><%= category.products.size %></span></div>
-                  <div class="p-2 bd-highlight">
-                    <%= link_to edit_admin_category_path(category.id), class: "text-gray-500", title: "Editar" do %>
-                      <i class="fas fa-pen"></i>
-                    <% end %>
-                  </div>
-                  <div class="p-2 bd-highlight">
-                    <%= link_to admin_category_path(category.id), method: :delete, data: { confirm: "Confirma?" }, class: "text-gray-500", title: "Deletar" do %>
-                      <i class="fas fa-trash"></i>
-                    <% end %>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <div class="card bg-info text-white shadow">
-            <div class="card-body">
-              Nenhuma categoria cadastrada
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
