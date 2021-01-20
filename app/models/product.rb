@@ -7,11 +7,8 @@ class Product < ApplicationRecord
     numericality: { greater_than: 0, less_than: 1000000 }
   validates :promotional_price,
     numericality: { greater_than: 0, less_than: 1000000 }, allow_nil: true
+  validates :picture, presence: true
 
   has_one_attached :picture
   belongs_to :category
-
-  def promotional_price=(price)
-    format_price(price)
-  end
 end
