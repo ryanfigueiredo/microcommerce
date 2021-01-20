@@ -9,6 +9,7 @@ pt-BR:
       category:
         name: "Nome"
       customer_order:
+        way_of_payment: "Método de pagamento"
         way_of_payments:
           credit_card: "Cartão de crédito"
           money: "Dinheiro"

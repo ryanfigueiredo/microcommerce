@@ -1,13 +1,15 @@
 <%= form_for [:admin, product], { html: { class: "" } } do |form| %>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <div class="form-group">
         <label for="exampleInputEmail1">Nome</label>
         <%= form.text_field :name, class: "form-control" %>
         <%= display_field_error_message(@product, :name) %>
       </div>
     </div>
+  </div>
 
+  <div class="row">
     <div class="col-md-4">
       <div class="form-group">
         <label for="exampleInputEmail1">Categoria</label>
@@ -16,7 +18,7 @@
       </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-3">
       <label for="product-price">Preço</label>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -27,17 +29,26 @@
       </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-3">
       <label for="product-price">Preço promocional</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text" id="price-addon">R$</span>
         </div>
-        <%= form.number_field :promotional_price, class: "form-control", min: 0.01, step: 0.01, aria: { describedby: "price-addon"} %>
+        <%= form.number_field :promotional_price, class: "form-control", min: 0.01, step: 0.01, aria: { describedby: "promotional-price-addon"} %>
         <%= display_field_error_message(@product, :promotional_price) %>
       </div>
     </div>
+
+    <div class="col-md-2">
+      <label for="product-price">Items em estoque</label>
+      <div class="input-group">
+        <%= form.number_field :items_in_stock, class: "form-control", min: 1, step: 1, aria: { describedby: "items-in-stock-addon"} %>
+        <%= display_field_error_message(@product, :items_in_stock) %>
+      </div>
+    </div>
   </div>
+
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">

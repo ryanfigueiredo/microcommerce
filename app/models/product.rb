@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   validates :promotional_price,
     numericality: { greater_than: 0, less_than: 1000000 }, allow_nil: true
   validates :picture, presence: true
+  validates :items_in_stock, presence: true
 
   has_one_attached :picture
   belongs_to :category

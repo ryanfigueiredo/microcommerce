@@ -15,7 +15,20 @@ class CustomerOrder < ApplicationRecord
 
   scope :today, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
 
+  after_create :update_items_in_stock_from_products
+
   def ordered_products_amount_and_names
     self.ordered_products.map{ |op| "#{op.amount} #{op.product.name}" }
+  end
+
+  def update_items_in_stock_from_products
+    product_ids = self.ordered_products.pluck(:product_id)
+    product_items_in_stocks = Product.where(id: product_ids).pluck(:items_in_stock)
+    product_amounts = self.ordered_products.pluck(:amount)
+    rest_items_in_stock = product_items_in_stocks.zip(product_amounts).map do |product_items_in_stock, product_amount|
+      { items_in_stock: product_items_in_stock - product_amount }
+    end
+
+    Product.update(product_ids, rest_items_in_stock)
   end
 end

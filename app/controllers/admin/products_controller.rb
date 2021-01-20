@@ -50,7 +50,7 @@ module Admin
     private
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :promotional_price, :category_id, :picture)
+      params.require(:product).permit(:name, :description, :price, :promotional_price, :category_id, :picture, :items_in_stock)
     end
 
     def set_product
