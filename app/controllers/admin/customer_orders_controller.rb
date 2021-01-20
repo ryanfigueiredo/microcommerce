@@ -58,7 +58,9 @@ class Admin::CustomerOrdersController < ApplicationController
       list_products: @customer_order.ordered_products_amount_and_names.to_sentence,
       change_for: @customer_order.change_for,
       total_value: @customer_order.total_value,
-      icon_way_of_payment: @customer_order.way_of_payment
+      icon_way_of_payment: @customer_order.way_of_payment,
+      order_time: @customer_order.created_at.strftime("%H:%m"),
+      id: @customer_order.id
     }
   end
 end

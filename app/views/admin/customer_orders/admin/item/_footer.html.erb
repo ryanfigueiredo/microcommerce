@@ -15,13 +15,13 @@
     </div>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <% if customer_order.sent? %>
-        <%= link_to admin_customer_order_path(customer_order.id, customer_order: { status: :sent }), method: :patch, remote: true, data: { confirm: "Alterar status?" }, class: "dropdown-item" do %>
+        <%= link_to admin_customer_order_path(customer_order.id, customer_order: { status: :waiting_for_shipment }), method: :patch, remote: true, data: { confirm: "Alterar status?" }, class: "dropdown-item" do %>
           <span class="mr-2">
             <i class="fas fa-circle text-primary"></i> Aguardando envio
           </span>
         <% end %>
       <% else %>
-        <%= link_to admin_customer_order_path(customer_order.id, customer_order: { status: :waiting_for_shipment }), method: :patch, remote: true, data: { confirm: "Alterar status?" }, class: "dropdown-item" do %>
+        <%= link_to admin_customer_order_path(customer_order.id, customer_order: { status: :sent }), method: :patch, remote: true, data: { confirm: "Alterar status?" }, class: "dropdown-item" do %>
           <span class="mr-2">
             <i class="fas fa-circle text-success"></i> Enviado
           </span>

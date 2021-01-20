@@ -37,7 +37,9 @@ var getCustomerOrderItemFromTemplate = (content) => {
     creditCard: content.getElementById('credit-card'),
     money: content.getElementById('money'),
     listProducts: content.getElementById('list-products'),
-    totalValue: content.getElementById('total-value')
+    totalValue: content.getElementById('total-value'),
+    orderTime: content.getElementById('order-time'),
+    linkToUpdateStatus: content.getElementById('link-to-update-status')
   }
 }
 
@@ -47,6 +49,11 @@ var updateTemplateCustomerOrderItem = (customerOrderItemTemplate, customerOrderI
   customerOrderItemParams.icon_way_of_payment === "credit_card" ? $(customerOrderItemTemplate.money).hide() : $(customerOrderItemTemplate.creditCard).hide()
   customerOrderItemTemplate.listProducts.innerHTML = customerOrderItemParams.list_products
   customerOrderItemTemplate.totalValue.innerHTML = 'Total: R$ ' + customerOrderItemParams.total_value
+  $(customerOrderItemTemplate.orderTime).append(customerOrderItemParams.order_time)
+
+  let urlUpdateStatus = $(customerOrderItemTemplate.linkToUpdateStatus).data('url')
+  let urlUpdateStatusWithId = urlUpdateStatus.replace(/id/i, customerOrderItemParams.id)
+  $(customerOrderItemTemplate.linkToUpdateStatus).attr('href', urlUpdateStatusWithId)
 }
 
 var appendItemInCustomerOrderList = (item) => {
