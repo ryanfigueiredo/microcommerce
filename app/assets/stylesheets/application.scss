@@ -69,6 +69,25 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   min-height: calc(100vh - 4.719rem);
 }
 
+.export-option-card {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  font-size: 1.1rem;
+  display: none;
+  transition: .4s;
+}
+
+.card-customer-order:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  transition: .4s;
+
+  .export-option-card {
+    display: block;
+  }
+}
+
 @keyframes stretch {
   0% {
     transform: scale(1)

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :products
     resources :delivery_charges
     resources :customer_orders, only: [:create, :index, :update]
+    resources :downloads, only: [:create]
   end
 end
