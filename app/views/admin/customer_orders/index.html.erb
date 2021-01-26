@@ -8,9 +8,11 @@
       <%= render "admin/customer_orders/admin/item/index", customer_order: customer_order %>
     <% end %>
   <% else %>
-    <div class="card bg-info text-white shadow" id="no-item-customer-order">
-      <div class="card-body">
-        Nenhum pedido recebido
+    <div class="col-12">
+      <div class="card bg-info text-white shadow" id="no-item-customer-order">
+        <div class="card-body">
+          Nenhum pedido recebido
+        </div>
       </div>
     </div>
   <% end %>
