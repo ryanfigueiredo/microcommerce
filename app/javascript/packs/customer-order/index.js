@@ -1,4 +1,5 @@
 require('./controllers/add')
+require('./controllers/update')
 
 $(document).on('turbolinks:load', function() {
   displayChangeFor()

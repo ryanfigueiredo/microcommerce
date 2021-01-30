@@ -18,6 +18,10 @@ pt-BR:
         delivery_charge_id: "Taxa de entrega"
         observation: "Observações"
         change_for: "Troco para"
+        statuses:
+           waiting_for_shipment: "Aguardando envio"
+           sent: "Enviado"
+           packing: "Empacotando"
       delivery_charge:
         price: "Preço"
         county: "Municipio"

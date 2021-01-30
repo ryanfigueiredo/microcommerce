@@ -11,7 +11,7 @@ class CustomerOrder < ApplicationRecord
   accepts_nested_attributes_for :ordered_products
 
   enum way_of_payment: { credit_card: 0, money: 1 }
-  enum status: { waiting_for_shipment: 0, sent: 1 }
+  enum status: { waiting_for_shipment: 0, packing: 1, sent: 2 }
 
   scope :today, -> { where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day) }
 
