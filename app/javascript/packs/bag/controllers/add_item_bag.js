@@ -20,6 +20,8 @@ var handleClickAddProduct = () => {
     $('#' + productId + '-size-items').show()
 
     changeMessageTextBag()
+    updateItemsInStock(this)
+    blockAddItemInBag(this, productId)
   })
 }
 
@@ -68,7 +70,8 @@ var getProductParams = (product) => {
     name: $(product).data('name'),
     price: $(product).data('price'),
     img: $(product).data('img'),
-    id: $(product).data('id')
+    id: $(product).data('id'),
+    itemsInStock: $(product).data('itemsInStock')
   }
 }
 
@@ -89,6 +92,7 @@ var updateTemplateProduct = (productTemplate, productParams) => {
   productTemplate.productId.setAttribute('data-amount', 1)
   productTemplate.productId.setAttribute('data-price', productParams.price)
   productTemplate.productId.setAttribute('data-id', productParams.id)
+  productTemplate.productId.setAttribute('data-items-in-stock', productParams.itemsInStock)
 }
 
 var calculateValueTotalBag = (className) => {
@@ -98,4 +102,24 @@ var calculateValueTotalBag = (className) => {
 var changeMessageTextBag = () => {
   $('#message-bag').hide()
   $('#make-a-customer-order').show()
+}
+
+var updateItemsInStock = (btnAdd) => {
+  let itemsInStock = $(btnAdd).data('items-in-stock')
+  let itemsInStockUpdated = itemsInStock - 1
+  $(btnAdd).data('items-in-stock', itemsInStockUpdated)
+  $(btnAdd).siblings().data('items-in-stock', itemsInStockUpdated)
+}
+
+var blockAddItemInBag = (btnAdd, productId) => {
+  let itemsInStock = $(btnAdd).data('items-in-stock')
+  if(itemsInStock === 0) {
+    btnAdd.disabled = true
+    blockImageItem(productId)
+  }
+}
+
+var blockImageItem = (productId) => {
+  $('#image-' + productId).css('opacity', .5)
+  $('#image-' + productId).children('.no-items-in-stock').show()
 }

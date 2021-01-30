@@ -12,9 +12,15 @@ var handleClickRemoveProduct = () => {
 
     if(productAmount > 1) {
       updateBagProduct(productId, productPrice)
+      updateItemsInStock(this)
+      unblockAddItemInBag(this)
+      unblockImageItem(productId)
     } else if (productAmount == 1) {
       $(productId).remove()
       $(productId + '-size-items').hide()
+      updateItemsInStock(this)
+      unblockAddItemInBag(this)
+      unblockImageItem(productId)
     }
 
     verifyAndCalculatePriceAndAmountTheProducts()
@@ -62,9 +68,35 @@ var changeMessageTextBag = () => {
 var handleRemoveItemsInBag = () => {
   $('body').on('click', '.remove-item', function() {
     let productId = $(this).data('product-id')
+    let itemsInStock = $(productId).data('itemsInStock')
+
     $(productId).remove()
     $(productId + '-size-items').text(1).hide()
 
     verifyAndCalculatePriceAndAmountTheProducts()
+    updateItemsInStock($(productId + '-remove'), itemsInStock)
+    unblockAddItemInBag($(productId + '-remove'))
+    unblockImageItem(productId)
   })
+}
+
+var updateItemsInStock = (btnRemove, itemsInStock = null) => {
+  if(itemsInStock === null) {
+    var itemsInStock = $(btnRemove).data('items-in-stock') + 1
+  }
+
+  $(btnRemove).data('items-in-stock', itemsInStock)
+  $(btnRemove).siblings().data('items-in-stock', itemsInStock)
+}
+
+var unblockAddItemInBag = (btnRemove) => {
+  let itemsInStock = $(btnRemove).data('items-in-stock')
+  if(itemsInStock > 0) {
+    $(btnRemove).siblings()[0].disabled = false
+  }
+}
+
+var unblockImageItem = (productId) => {
+  $('#image-' + productId.substring(1)).css('opacity', 100)
+  $('#image-' + productId.substring(1)).children('.no-items-in-stock').attr("style", "display: none !important");
 }

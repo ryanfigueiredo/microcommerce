@@ -32,18 +32,22 @@
                         data-price="<%= format_price(product.promotional_price).presence || format_price(product.price) %>"
                         data-name="<%= product.name %>"
                         data-img="<%= url_for(product.picture) %>"
-                        data-id="<%= product.id %>">
+                        data-id="<%= product.id %>"
+                        data-items-in-stock="<%= product.items_in_stock %>">
                         <i class="fas fa-plus"></i>
                       </button>
-                      <button class="btn btn-danger btn-circle btn-sm remove-product-to-bag"
+                      <button class="btn btn-danger btn-circle btn-sm remove-product-to-bag" id="<%= "#{category.name}-#{category.id}-#{product.id}-remove" %>"
                         data-product-id="<%= "##{category.name}-#{category.id}-#{product.id}" %>"
                         data-price="<%= format_price(product.promotional_price).presence || format_price(product.price) %>"
-                        data-update-item=true>
+                        data-update-item=true data-items-in-stock="<%= product.items_in_stock %>">
                         <i class="fas fa-minus"></i>
                       </button>
                     </div>
                   </div>
-                  <div class="col-auto">
+                  <div class="col-auto" id="image-<%= "#{category.name}-#{category.id}-#{product.id}" %>">
+                    <div style="display: none !important;" class="bg-primary text-white p-1 rotate-n-15 d-inline-block no-items-in-stock">
+                      0 itens no estoque.
+                    </div>
                     <img src="<%= url_for(product.picture) %>" class="img-fluid rounded" width="100" height="100">
                   </div>
                 </div>
