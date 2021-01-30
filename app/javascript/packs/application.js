@@ -12,14 +12,7 @@ require('imports-loader?define=>false!datatables.net')(window, $)
 require('imports-loader?define=>false!datatables.net-bs4')(window, $)
 require('./shared/sb-admin-2')
 
-// Examples
-require('chartkick')
-require('chart.js')
-
-require('./shared/demo/chart-area-demo')
-require('./shared/demo/chart-bar-demo')
-require('./shared/demo/chart-pie-demo')
-
+require('./shared/datatables')
 require('./shared/form')
 require('./bag/index')
 require('./customer-order/index')
