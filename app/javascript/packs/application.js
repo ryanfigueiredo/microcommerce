@@ -18,7 +18,7 @@ require('./bag/index')
 require('./customer-order/index')
 
 $(document).on('turbolinks:load', function(){
-  $('.general-alert').delay(2800).slideUp(500, function(){
+  $('.general-alert').delay(3800).slideUp(500, function(){
     $('.general-alert').alert('close');
   });
 });

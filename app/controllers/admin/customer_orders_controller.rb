@@ -13,7 +13,7 @@ class Admin::CustomerOrdersController < ApplicationController
         ActionCable.server.broadcast "customer_order_channel", content: set_customer_order_to_list
         format.html { redirect_to root_path, notice: 'Pedido enviado com sucesso.' }
       else
-        format.html { redirect_to root_path }
+        format.html { redirect_to root_path, alert: @customer_order.errors.full_messages.to_sentence }
       end
     end
   end

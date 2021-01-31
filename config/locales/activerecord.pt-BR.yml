@@ -5,6 +5,7 @@ pt-BR:
       product: "Produto"
       delivery_charge: "Taxa de entrega"
       customer_order: "Pedido do cliente"
+      ordered_product: "Produto pedido"
     attributes:
       category:
         name: "Nome"
@@ -32,3 +33,5 @@ pt-BR:
         promotional_price: "Preço promocional"
         description: "Descrição"
         picture: "Imagem"
+      ordered_products:
+        product_id: "Produto"
