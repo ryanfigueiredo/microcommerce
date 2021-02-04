@@ -5,6 +5,7 @@ pt-BR:
       product: "Produto"
       delivery_charge: "Taxa de entrega"
       customer_order: "Pedido do cliente"
+      setting: "Configuração"
     attributes:
       category:
         name: "Nome"

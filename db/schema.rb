@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_124640) do
+ActiveRecord::Schema.define(version: 2021_02_03_023054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,19 @@ ActiveRecord::Schema.define(version: 2021_01_20_124640) do
     t.decimal "promotional_price", precision: 10, scale: 2
     t.integer "items_in_stock", default: 1, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "commerce_name", default: "Mini E-commerce"
+    t.string "header_color", default: "#ffffff"
+    t.string "footer_color", default: "#ffffff"
+    t.string "sidebar_color", default: "#4e73df"
+    t.string "text_sidebar", default: "Mini e-commerce"
+    t.string "short_text_sidebar", default: "ME"
+    t.string "text_footer", default: "Miniecommerce"
+    t.boolean "display_general_search", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

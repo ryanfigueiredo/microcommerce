@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :customer_orders, only: [:create, :index, :update]
     resources :downloads, only: [:create]
     resources :reports, only: [:index]
+    resources :settings, only: [:edit, :update]
   end
 end

@@ -1,0 +1,74 @@
+<div class="text-xs font-weight-bold text-primary text-uppercase p-3">
+  Configurações
+</div>
+
+<%= form_for [:admin, @setting] do |form| %>
+  <div class="row">
+    <div class="col-12 col-md-7">
+      <div class="form-group">
+        <label>Nome do comércio</label>
+        <%= form.text_field :commerce_name, class: "form-control", placeholder: "Ex: Mini E-commerce" %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <label>Logo</label>
+      <div class="input-group">
+        <div class="custom-file">
+          <%= form.file_field :logo, class: "custom-file-input" %>
+          <label class="custom-file-label" for="product_picture">Escolher arquivo</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-2">
+      <div class="form-group">
+        <label>Cor do cabeçalho</label>
+        <%= form.color_field :header_color, class: "form-control", value: @setting.header_color %>
+      </div>
+    </div>
+    <div class="col-12 col-md-2">
+      <div class="form-group">
+        <label>Cor do rodapé</label>
+        <%= form.color_field :footer_color, class: "form-control", value: @setting.footer_color %>
+      </div>
+    </div>
+    <div class="col-12 col-md-2">
+      <div class="form-group">
+        <label>Cor da barra lateral</label>
+        <%= form.color_field :sidebar_color, class: "form-control", value: @setting.sidebar_color %>
+      </div>
+    </div>
+    <div class="col-12 col-md-3">
+      <div class="form-group form-check mt-2-4rem">
+        <%= form.check_box :display_general_search, class: "form-check-input" %>
+        <%= label_tag :display_general_search, "Exibir pesquisa geral?", class: "form-check-label" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <div class="form-group">
+        <label>Texto da barra lateral</label>
+        <%= form.text_field :text_sidebar, class: "form-control", placeholder: "Ex: Mini e-commerce" %>
+      </div>
+    </div>
+    <div class="col-12 col-md-3">
+      <div class="form-group">
+        <label>Texto abreviado da barra lateral</label>
+        <%= form.text_field :short_text_sidebar, class: "form-control", placeholder: "Ex: M E" %>
+      </div>
+    </div>
+    <div class="col-12 col-md-3">
+      <div class="form-group">
+        <label>Texto do rodapé</label>
+        <%= form.text_field :text_footer, class: "form-control", placeholder: "Ex: Miniecommerce" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -1,10 +1,9 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: <%= setting.sidebar_color %>;">
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%= root_path %>">
     <div class="sidebar-brand-icon">
-      <span>Horti Fruti</span>
-      <span>Da Kelly</span>
+      <span><%= setting.short_text_sidebar %></span>
     </div>
-    <div class="sidebar-brand-text mx-3">Horti Fruti Da Kelly</div>
+    <div class="sidebar-brand-text mx-2"><%= setting.text_sidebar %></div>
   </a>
 
   <hr class="sidebar-divider">
@@ -41,6 +40,13 @@
     <a class="nav-link" href="<%= admin_reports_path %>">
       <i class="fas fa-fw fa-file-alt"></i>
       <span>Relatórios</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="<%= edit_admin_setting_path(setting.id) %>">
+      <i class="fas fa-fw fa-cogs"></i>
+      <span>Configurações</span>
     </a>
   </li>
 
