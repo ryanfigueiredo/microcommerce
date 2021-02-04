@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @setting.commerce_name %></title>
+    <title><%= current_setting.commerce_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,7 +16,7 @@
     <div id="wrapper">
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content" class="content-min-height-calc">
-          <%= render "layouts/shared/navbar", layout: :public, setting: @setting %>
+          <%= render "layouts/shared/navbar", layout: :public %>
           <div class="container-fluid">
             <%= render partial: "layouts/shared/flash", flash: flash %>
             <%= yield %>
@@ -25,7 +25,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; <%= @setting.text_footer %> <%= Time.zone.now.year %></span>
+              <span>Copyright &copy; <%= current_setting.text_footer %> <%= Time.zone.now.year %></span>
             </div>
           </div>
         </footer>
