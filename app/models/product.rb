@@ -10,6 +10,6 @@ class Product < ApplicationRecord
   validates :picture, presence: true
   validates :items_in_stock, presence: true
 
-  has_one_attached :picture
+  has_one_attached :picture, dependent: :destroy
   belongs_to :category
 end

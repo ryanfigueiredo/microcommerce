@@ -24,7 +24,7 @@ module Admin
       params.require(:setting).permit(:commerce_name,
         :header_color, :footer_color, :sidebar_color,
         :text_sidebar, :short_text_sidebar, :text_footer,
-        :display_general_search
+        :display_general_search, :logo
       )
     end
   end
