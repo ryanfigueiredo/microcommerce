@@ -5,6 +5,12 @@
     </button>
   <% end %>
 
+  <% if current_setting.logo.attached? %>
+    <%= image_tag(url_for(current_setting.logo), width: "50px", height: "50px") %>
+  <% else %>
+    <span><%= current_setting.commerce_name %></span>
+  <% end %>
+
   <% if current_setting.display_general_search %>
     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
       <div class="input-group">
