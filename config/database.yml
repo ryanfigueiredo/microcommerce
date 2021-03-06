@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: hortifrutidakelly_development
+  database: microcommerce_development
 
 test:
   <<: *default
-  database: hortifrutidakelly_test
+  database: microcommerce_test
 
 production:
   <<: *default
-  database: hortifrutidakelly_production
-  username: hortifrutidakelly
-  password: <%= ENV['HORTIFRUTIDAKELLY_DATABASE_PASSWORD'] %>
+  database: microcommerce_production
+  username: microcommerce
+  password: <%= ENV['MICROCOMMERCE_DATABASE_PASSWORD'] %>
